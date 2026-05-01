@@ -212,7 +212,7 @@ export default function App() {
             <Youtube className="text-[#FF6B00] w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold tracking-tight uppercase italic font-serif">GS-Title Studio</h1>
+            <h1 className="text-xl font-bold tracking-tight uppercase italic font-serif">G-Title Studio</h1>
             <p className="text-[10px] uppercase tracking-widest opacity-50 font-mono text-[#FF6B00]">Công cụ Chiến lược Tiêu đề YouTube</p>
           </div>
         </div>
