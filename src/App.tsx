@@ -279,7 +279,7 @@ export default function App() {
             <textarea 
               value={newTopic}
               onChange={(e) => setNewTopic(e.target.value)}
-              placeholder="Video của bạn nói về điều gì? (VD: 'Tôi đã ở 24 giờ trong ngôi nhà ma')"
+              placeholder="Video của bạn nói về điều gì? (VD: 'Bí mật đằng sau sự thành công của các YouTuber triệu view')"
               className="w-full bg-[#111] border border-white/5 p-4 text-sm focus:outline-none focus:border-[#FF6B00]/50 transition-colors min-h-[120px] resize-none"
             />
             
