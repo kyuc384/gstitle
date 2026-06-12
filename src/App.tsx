@@ -83,11 +83,18 @@ export default function App() {
   };
 
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [copiedIndexEn, setCopiedIndexEn] = useState<number | null>(null);
 
   const copyToClipboard = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
     setCopiedIndex(index);
     setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  const copyToClipboardEn = (text: string, index: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndexEn(index);
+    setTimeout(() => setCopiedIndexEn(null), 2000);
   };
 
   const generateTitles = async () => {
@@ -149,6 +156,7 @@ export default function App() {
           "titles": [
             {
               "title": "chuỗi văn bản tiếng Việt",
+              "title_en": "English translation of the generated Vietnamese title above",
               "reason": "chuỗi văn bản tiếng Việt",
               "predicted_ctr_score": số (1-10)
             }
@@ -181,10 +189,11 @@ export default function App() {
                   type: Type.OBJECT,
                   properties: {
                     title: { type: Type.STRING },
+                    title_en: { type: Type.STRING },
                     reason: { type: Type.STRING },
                     predicted_ctr_score: { type: Type.NUMBER },
                   },
-                  required: ["title", "reason", "predicted_ctr_score"],
+                  required: ["title", "title_en", "reason", "predicted_ctr_score"],
                 },
               },
             },
@@ -212,7 +221,7 @@ export default function App() {
             <Youtube className="text-[#FF6B00] w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold tracking-tight uppercase italic font-serif">G-Title Studio</h1>
+            <h1 className="text-xl font-bold tracking-tight uppercase italic font-serif">Optimizer Title</h1>
             <p className="text-[10px] uppercase tracking-widest opacity-50 font-mono text-[#FF6B00]">Công cụ Chiến lược Tiêu đề YouTube</p>
           </div>
         </div>
@@ -469,17 +478,39 @@ export default function App() {
                               e.stopPropagation();
                               copyToClipboard(title.title, idx);
                             }}
-                            className="flex items-center gap-1.5 text-[10px] font-mono font-bold hover:underline"
+                            className="flex items-center gap-1.5 text-xs font-mono font-bold hover:underline"
+                            title="Sao chép tiêu đề Tiếng Việt"
                           >
                             {copiedIndex === idx ? (
                               <>
-                                <Check className="w-3 h-3 text-green-500 group-hover:text-black" />
-                                <span>ĐÃ SAO CHÉP</span>
+                                <Check className="w-3.5 h-3.5 text-green-500 group-hover:text-black" />
+                                <span>ĐÃ SAO CHÉP (VI)</span>
                               </>
                             ) : (
                               <>
-                                <Copy className="w-3 h-3" />
-                                <span>SAO CHÉP</span>
+                                <Copy className="w-3.5 h-3.5" />
+                                <span>SAO CHÉP (VI)</span>
+                              </>
+                            )}
+                          </button>
+                          
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              copyToClipboardEn(title.title_en, idx);
+                            }}
+                            className="flex items-center gap-1.5 text-xs font-mono font-bold hover:underline"
+                            title="Sao chép tiêu đề Tiếng Anh"
+                          >
+                            {copiedIndexEn === idx ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-green-500 group-hover:text-black" />
+                                <span>ĐÃ SAO CHÉP (EN)</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5" />
+                                <span>SAO CHÉP (EN)</span>
                               </>
                             )}
                           </button>
@@ -489,7 +520,8 @@ export default function App() {
                           </div>
                         </div>
                       </div>
-                      <h3 className="text-base font-bold mb-2 group-hover:italic transition-all">{title.title}</h3>
+                      <h3 className="text-base font-bold group-hover:italic transition-all">{title.title}</h3>
+                      <p className="text-xs font-semibold text-[#FF6B00] group-hover:text-black mb-2 transition-all italic">{title.title_en}</p>
                       <p className="text-[10px] opacity-60 leading-relaxed max-w-lg group-hover:text-black/80">{title.reason}</p>
                       
                       {/* Hover Effect */}

@@ -13,6 +13,7 @@ export interface TitleGenerationResult {
   title_strategy_model: string;
   titles: {
     title: string;
+    title_en: string;
     reason: string;
     predicted_ctr_score: number;
   }[];
