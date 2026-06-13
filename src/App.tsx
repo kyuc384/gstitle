@@ -283,7 +283,7 @@ export default function App() {
           <section className="mt-auto pt-8 border-t border-white/5">
             <div className="flex items-center gap-2 mb-4">
               <Sparkles className="w-4 h-4 text-[#FF6B00]" />
-              <h2 className="text-xs uppercase tracking-widest font-bold font-mono">Chủ đề Mới</h2>
+              <h2 className="text-xs uppercase tracking-widest font-bold font-mono">Nhập Tiêu Đề</h2>
             </div>
             <textarea 
               value={newTopic}
